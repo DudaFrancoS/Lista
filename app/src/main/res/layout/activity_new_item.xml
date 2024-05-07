@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/etDesc"
+    android:id="@+id/cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.NewItemActivity">
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imbCI" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/etDesc"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
