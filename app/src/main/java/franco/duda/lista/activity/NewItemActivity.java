@@ -36,12 +36,13 @@ public class NewItemActivity extends AppCompatActivity {
             return insets;
         });
 
-        ImageButton imgCI = findViewById(R.id.imbCI);
+        //onClick mostra oq vai acontecer quando clicarmos no botao
+        ImageButton imgCI = findViewById(R.id.imbCI); //obtemos o botao
 
-        imgCI.setOnClickListener(new View.OnClickListener() {
+        imgCI.setOnClickListener(new View.OnClickListener() { //definimos ovidor de cliques
             @Override
-            public void onClick(View v) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            public void onClick(View v) { //executamos a abertura da galeria
+                Intent photoPickerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT); //criamos um Intent e abrimos o documento com ACTION_OPEN_DOCUMENT
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent,PHOTO_PICKER_REQUEST);
             }

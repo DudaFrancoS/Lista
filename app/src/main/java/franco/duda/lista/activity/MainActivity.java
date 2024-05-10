@@ -41,14 +41,15 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        FloatingActionButton fabAddItem = findViewById(R.id.floatingActionButton);
+        //onClick mostra oq vai acontecer quando clicarmos no botao
+        FloatingActionButton fabAddItem = findViewById(R.id.floatingActionButton); //obtemos um botao
 
-        fabAddItem.setOnClickListener(new View.OnClickListener() {
+        fabAddItem.setOnClickListener(new View.OnClickListener() { //registramos ouvidor de cliques
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { //realizamos a navegação em si através do uso de um Intent explícito para navegar para NewItemAcitvity
                 Intent i = new Intent(MainActivity.this,NewItemActivity.class);
-                startActivityForResult(i, NEW_ITEM_REQUEST);
+                startActivityForResult(i, NEW_ITEM_REQUEST); //executamos o Intent usando um método especial
             }
         });
 
