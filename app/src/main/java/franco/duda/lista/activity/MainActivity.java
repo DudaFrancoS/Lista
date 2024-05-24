@@ -26,7 +26,7 @@ import franco.duda.lista.model.MyItem;
 public class MainActivity extends AppCompatActivity {
 
     static int NEW_ITEM_REQUEST = 1;
-    List<MyItem> itens = new ArrayList<>();
+    List<MyItem> itens = new ArrayList<>(); //atributo
 
     MyAdapter myAdapter;
 
@@ -67,15 +67,15 @@ public class MainActivity extends AppCompatActivity {
         rvItens.addItemDecoration(dividerItemDecoration);
     }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode,Intent data) { //Ao retornar de NewItemActivity, o método onActivityResult é chamado em MainActivity
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == NEW_ITEM_REQUEST) {
+        if (requestCode == NEW_ITEM_REQUEST) { //verificamos se as condições de retorno foram cumpridas
             if (resultCode == Activity.RESULT_OK) {
-                MyItem myItem = new MyItem();
-                myItem.title = data.getStringExtra("title");
+                MyItem myItem = new MyItem(); //Em caso afirmativo, criamos uma instância de MyItem para guardar os dados do item
+                myItem.title = data.getStringExtra("title"); //obtemos os dados retornados por NewItemActivity e os guardamos dentro de myItem.
                 myItem.description = data.getStringExtra("description");
                 myItem.photo = data.getData();
-                itens.add(myItem);
+                itens.add(myItem); //adicionamos o item a uma lista de itens
                 myAdapter.notifyItemInserted(itens.size()-1);
             }
         }

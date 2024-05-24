@@ -26,14 +26,14 @@ public class MyAdapter extends RecyclerView.Adapter{
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //responsável por criar os elementos de interface para um item.
         LayoutInflater inflater = LayoutInflater.from(mainActivity);
         View v = inflater.inflate(R.layout.item_list,parent,false);
         return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) { //recebe o ViewHolder criado por onCreateViewHolder e preenche os elementos de UI com os dados do item;
         MyItem myItem = itens.get(position);
 
         View v = holder.itemView;
@@ -51,7 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter{
     @Override
     public int getItemCount() {
         return itens.size();
-    }
+    } //nforma quantos elementos a lista possui;
 
 
 }
