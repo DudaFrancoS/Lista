@@ -2,6 +2,8 @@ package franco.duda.lista.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,12 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 import franco.duda.lista.R;
 import franco.duda.lista.adapter.MyAdapter;
 import franco.duda.lista.model.MyItem;
+import franco.duda.lista.util.Util;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,7 +78,17 @@ public class MainActivity extends AppCompatActivity {
                 MyItem myItem = new MyItem(); //Em caso afirmativo, criamos uma instância de MyItem para guardar os dados do item
                 myItem.title = data.getStringExtra("title"); //obtemos os dados retornados por NewItemActivity e os guardamos dentro de myItem.
                 myItem.description = data.getStringExtra("description");
-                myItem.photo = data.getData();
+                Uri selectedPhotoURI = data.getData();
+
+                try {
+                    Bitmap photo = Util.getBitmap( MainActivity.this, selectedPhotoURI, 100, 100 ); //Essa função carrega a imagem e a guarda dentro de um Bitmap
+                    myItem.photo = photo; //guardamos o Bitmap da imagem dentro de um objeto do tipo MyItem
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
                 itens.add(myItem); //adicionamos o item a uma lista de itens
                 myAdapter.notifyItemInserted(itens.size()-1);
             }
